@@ -98,42 +98,6 @@ PromptTemplateManager(template='Hello {name}, you are {age} years old')
 
 ---
 
-## Project Structure
-
-```text
-ai-engineer-journey/
-│
-├── prompt_template_manager.py
-└── README.md
-```
-
----
-
-## Code Example
-
-```python
-import re
-
-
-class PromptTemplateManager:
-    def __init__(self, template: str):
-        self.template = template
-
-    def render(self, **kwargs) -> str:
-        try:
-            return self.template.format(**kwargs)
-        except KeyError as e:
-            return f"Error: Missing template variable: {e}"
-
-    def __repr__(self):
-        return f"PromptTemplateManager(template={self.template!r})"
-
-    def list_variables(self) -> list[str]:
-        return re.findall(r"\{(.*?)\}", self.template)
-```
-
----
-
 ## Example Usage
 
 ```python
