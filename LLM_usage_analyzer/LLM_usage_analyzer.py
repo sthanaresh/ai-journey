@@ -24,6 +24,11 @@ class LLMUsageAnalyzer:
         # group by "model" column, sum cost_usd per model
         return self.logs.groupby("model")["cost_usd"].sum()
 
+    def most_used_model(self) -> str:
+        # return the model name that appears most frequently in the logs
+        count_model = self.logs["model"].value_counts()
+        return count_model.idxmax()
+
 
 logs = pd.DataFrame(
     {
@@ -35,7 +40,12 @@ logs = pd.DataFrame(
         ],
         "tokens_used": [450, 200, 890, 310],
         "cost_usd": [0.009, 0.004, 0.018, 0.006],
-        "model": ["gpt-4", "gpt-3.5", "gpt-4", "gpt-3.5"],
+        "model": [
+            "gpt-4",
+            "gpt-3.5",
+            "gpt-4",
+            "gpt-3.5",
+        ],
     }
 )
 
@@ -44,3 +54,4 @@ print(f"Total Cost:{ Analyzer.total_cost()}")
 print(f"Average Tokens:{Analyzer.average_tokens()}")
 print(f"Most Expensive Call:{Analyzer.most_expensive_call()}")
 print(f"Cost by Model:\n{Analyzer.cost_by_model()}")
+print(f"Most Used Model:\n{Analyzer.most_used_model()}")
