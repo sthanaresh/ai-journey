@@ -37,3 +37,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 predictor = TokenPredictor()
 predictor.fit(X_train, y_train)
 print(predictor.evaluate(X_test, y_test))
+
+result = predictor.predict(100)
+print(f"For 100 words, predicted token is: {result}")
