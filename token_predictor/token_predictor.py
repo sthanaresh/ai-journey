@@ -68,7 +68,7 @@ y_test_1 = np.array([100, 200, 300])
 predictor_1 = TokenPredictor()
 predictor_1.fit(X_train_1, y_train_1)
 
-print(predictor.is_overfitting(X_train_1, y_train_1, X_test_1, y_test_1))
+print(predictor_1.is_overfitting(X_train_1, y_train_1, X_test_1, y_test_1))
 
 # false case:
 X_train_2 = np.array([[10], [20], [30], [40], [50]])
@@ -82,4 +82,4 @@ y_test_2 = np.array([79, 91])
 predictor_2 = TokenPredictor()
 predictor_2.fit(X_train_2, y_train_2)
 
-print(predictor.is_overfitting(X_train_2, y_train_2, X_test_2, y_test_2))
+print(predictor_2.is_overfitting(X_train_2, y_train_2, X_test_2, y_test_2))
